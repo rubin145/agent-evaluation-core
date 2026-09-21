@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-evaluation-core"
+version = "0.2.0"
+description = "Provider-independent pair evaluation with strict results and an offline fixture"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dataframe = ["pandas>=2.2,<3"]
+
+[dependency-groups]
+dev = ["pytest>=8,<9", "jsonschema>=4.23,<5"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent_evaluation_core"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/src/agent_evaluation_core", "/tests", "/demo.py", "/README.md", "/RUBRIC.md", "/docs", "/pyproject.toml", "/uv.lock", "/PROVENANCE.md", "/.gitignore"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
